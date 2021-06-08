@@ -29,7 +29,7 @@ const GroceryItem = ({ item, items, id, setItems, handleDelete, handleComplete, 
 			<input
 				type="text"
 				name="price"
-				defaultValue={item.price}
+				defaultValue={parseFloat(item.price).toFixed(2)}
 				onChange={handleChange}
 				ref={priceRef}
 				className={item.complete ? 'complete grocery-item-input' : 'grocery-item-input'}
