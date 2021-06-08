@@ -1,0 +1,43 @@
+.grocery-list-header,
+.grocery-list-item {
+	display: flex;
+	justify-content: space-between;
+
+	> p {
+		flex: 0 0 20%;
+		text-align: center;
+		border-bottom: 1px solid #ccc;
+		margin: 0;
+		padding: 10px 0;
+	}
+}
+
+
+.grocery-list-header {
+	background-color: #ccc;
+}
+
+.grocery-bottom {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.grocery-view-wrap {
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	height: 100%;
+}
+
+.grocery-list-view {
+	flex: 0 0 65%;
+	padding: 0;
+    margin: 0;
+    height: 100%;
+    overflow: scroll;
+}
+
+.grocery-view-mainwrap {
+	height: 100%;
+}

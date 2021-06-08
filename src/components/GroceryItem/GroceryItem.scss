@@ -1,0 +1,36 @@
+.grocery-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 0 10px;
+
+
+}
+
+.grocery-item-total {
+	flex: 0 0 150px;
+	text-align: center;
+	font-size: 18px;
+}
+
+.grocery-item-complete {
+	width: 20px;
+}
+
+.grocery-item-delete {
+	width: 20px;
+}
+
+.grocery-item-input {
+	height: 40px;
+  border: 0;
+  padding: 0 15px;
+  border: 1px solid #ccc;
+  flex: 0 0 100px;
+  font-family: 'Indie Flower', cursive;
+
+  &.complete {
+		background-color: #ccc;
+		pointer-events: none;
+	}
+}

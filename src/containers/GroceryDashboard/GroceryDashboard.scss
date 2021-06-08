@@ -1,0 +1,173 @@
+.grocery {
+	width: 900px;
+  margin: 0 auto 0;
+  height: 100vh;
+  display: flex;
+}
+
+.grocery-wrap {
+	width: 100%;
+  margin: 50px auto;
+  background: #fff;
+  padding: 80px 60px 100px;
+  position: relative;
+}
+
+.grocery-content {
+	overflow: scroll;
+  height: 100%;
+}
+
+.grocery-container {
+	padding-right: 12px;
+}
+
+.grocery-lines {
+	position: absolute;
+	top: -20px;
+	left: 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+
+	> div {
+		width: 10px;
+    height: 40px;
+    background-color: #616060;
+    border-radius: 4px;
+	}
+}
+
+.grocery-ballpen {
+	right: -100px;
+  top: 70px;
+  position: absolute;
+
+	> div {
+	  margin: auto;
+	  margin-top: 60px;
+    height: 430px;
+	  width: 35px;
+	  background: repeating-linear-gradient(
+	    90deg,
+	    #e3725d 0px,
+	    #e3725d 25px,
+	    #ce6855 25px,
+	    #ce6855 60px
+	  );
+	  
+	  &:after {
+	  	content: "";
+		  position: absolute;
+		  bottom: -69px;
+	    width: 35px;
+	    height: 70px;
+		  background: linear-gradient(0deg, #ffc266 45px, black 45px);
+		  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+		  transform: rotate(180deg);
+		  margin: 0 auto;
+	    left: 0;
+	    right: 0;
+	  }
+
+	  &:before {
+	  	content: "";
+		  position: absolute;
+		  top: 0;
+		  height: 60px;
+		  width: 35px;
+		  background: repeating-linear-gradient(
+		    0deg,
+		    #926257 0px,
+		    #926257 3px,
+		    #ecd652 3px,
+		    #ecd652 10px,
+		    #926257 10px,
+		    #926257 13px,
+		    #ecd652 13px,
+		    #ecd652 20px,
+		    #926257 20px,
+		    #926257 23px,
+		    #926257 23px,
+		    #926257 56px
+		  );
+		  border-top-left-radius: 20px;
+		  border-top-right-radius: 20px;
+	  }
+	}
+}
+
+.grocery-heading-area {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 0 50px;
+}
+
+.grocery-heading {
+	margin: 0;
+}
+
+.grocery-total {
+	margin: 0;
+	font-weight: 700;
+	font-family: 'Indie Flower', cursive;
+	font-size: 35px;
+  position: absolute;
+  right: 70px;
+  bottom: 24px;
+  display: flex;
+  align-items: center;
+
+  span {
+  	font-size: 20px;
+  	padding: 0 15px 0 0;
+  }
+}
+
+.grocery-add-item {
+	display: flex;
+	justify-content: space-between;
+}
+
+.grocery-input-text {
+	flex: 0 0 calc(100% - 250px);
+}
+
+.grocery-add-item-btn {
+	flex: 0 0 200px;
+	font-family: 'Indie Flower', cursive;
+}
+
+.grocery-list {
+	padding: 0;
+	margin: 50px 0 0;
+}
+
+.grocery-date-text {
+	display: flex;
+	justify-content: flex-end;
+
+	.react-datepicker__input-container {
+		input {
+			font-family: 'Indie Flower', cursive;
+			border: 0;
+			border-bottom: 1px solid #000;
+		}
+	}
+}
+
+.grocery-date-label {
+	padding: 0 10px 0 0;
+}
+
+.grocery-date-input {
+	border: 0;
+	border-bottom: 1px solid #ccc;
+}
+
+.grocery-buttons {
+	display: flex;
+	padding: 35px 0 0;
+}
+

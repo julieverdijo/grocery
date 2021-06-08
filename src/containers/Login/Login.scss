@@ -1,0 +1,41 @@
+.login-wrapper {
+	height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-heading {
+	text-align: center;
+}
+
+.form-field {
+	margin: 0 0 10px;
+}
+
+.form-label {
+	display: block;
+}
+
+.form-input {
+	border: 1px solid #000;
+    height: 30px;
+    width: 300px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    font-family: 'Indie Flower', cursive;
+}
+
+.form-button {
+	width: 100%;
+    background-color: #000;
+    color: #fff;
+    height: 30px;
+    font-family: 'Indie Flower', cursive;
+    font-size: 17px;
+    border: 0;
+
+    &:disabled {
+    	background-color: #ccc;
+    }
+}
