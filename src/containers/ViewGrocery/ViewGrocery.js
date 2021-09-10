@@ -30,8 +30,9 @@ const ViewGrocery = () => {
 	},[])
 
 	useEffect(() => {
+		let unsubscribe;
 		if(startDate) {
-			const unsubscribe = firebaseDB.collection('groceries').where('date', '>', timestamp1).where('date', '<' , timestamp2).where('complete', '==', true)
+			unsubscribe = firebaseDB.collection('groceries').where('date', '>', timestamp1).where('date', '<' , timestamp2).where('complete', '==', true)
 			.onSnapshot(snapshot => {
 				const data = snapshot.docs.map((doc) => ({
 					id: doc.id,
@@ -42,13 +43,12 @@ const ViewGrocery = () => {
 			}, (error) => {
 	       console.log(error);
 	    })
-	    return () => unsubscribe()
-		}
+	  }
 
 		if(startDate && endDate) {
 			const startDateTimestamp = fb.Timestamp.fromDate(new Date(startDate));
 			const endDateTimestamp = fb.Timestamp.fromDate(new Date(moment(endDate).add(1,'days').format("YYYY-MM-DD")));
-			const unsubscribeEndDate = firebaseDB.collection('groceries').where('date', '>', startDateTimestamp).where('date', '<' , endDateTimestamp).where('complete', '==', true)
+			unsubscribe = firebaseDB.collection('groceries').where('date', '>', startDateTimestamp).where('date', '<' , endDateTimestamp).where('complete', '==', true)
 			.onSnapshot(snapshot => {
 				const data = snapshot.docs.map((doc) => ({
 					id: doc.id,
@@ -59,7 +59,9 @@ const ViewGrocery = () => {
 			}, (error) => {
 	       console.log(error);
 	    })
-	    return () => unsubscribeEndDate()
+	  }
+		return () => {
+			unsubscribe();
 		}
 	}, [startDate, endDate])
 
