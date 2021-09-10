@@ -1,5 +1,4 @@
 import * as actionTypes from '../actionTypes/actionTypes';
-import { firebaseAuth } from '../../firebase';
 import { LOGIN } from '../../utils/constants';
 
 

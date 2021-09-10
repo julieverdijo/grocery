@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { firebaseDB, fb } from '../../firebase';
 import GroceryItem from '../../components/GroceryItem/GroceryItem';
 import Logout from '../Logout/Logout';
 import './GroceryDashboard.scss';
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment';
 
@@ -15,9 +13,7 @@ const GroceryDashboard = (props) => {
 	const [loading, setLoading] = useState(true);
 	const [total, setTotal] = useState(0);
 	const [newItem, setNewItem] = useState('');
-	const itemsArr = [];
-	const auth = useSelector(state => state.login.auth);
-	const [startDate, setStartDate] = useState(new Date(moment().format("YYYY-MM-DD")));
+	const [startDate] = useState(new Date(moment().format("YYYY-MM-DD")));
 	const timestamp1 = fb.Timestamp.fromDate(new Date(startDate));
 	const timestamp2 = fb.Timestamp.fromDate(new Date(moment(startDate).add(1,'days').format("YYYY-MM-DD")));
 
@@ -29,7 +25,9 @@ const GroceryDashboard = (props) => {
 			}))
 			setItems(data);
 			setLoading(false);
-		})
+		}, (error) => {
+       console.log(error);
+    })
 		return () => unsubscribe()
 	},[])
 
@@ -64,7 +62,6 @@ const GroceryDashboard = (props) => {
 	}
 
 	const handleDelete = (id) => {
-		console.log(id);
 		firebaseDB.collection('groceries').doc(id).delete();
 	}
 
@@ -74,7 +71,18 @@ const GroceryDashboard = (props) => {
 		})
 	}
 
-	console.log(auth);
+	const handleDeleteAll = () => {
+		let ref = firebaseDB.collection('groceries')
+		
+		firebaseDB.collection('groceries').get().then((querySnapshot) => {
+		    querySnapshot.forEach((doc) => {
+		        // doc.data() is never undefined for query doc snapshots
+		        ref.doc(doc.id).delete()
+		    })
+		})
+
+	}
+
 	return (
 		<>
 			<div className={'grocery-content'}>
@@ -113,6 +121,7 @@ const GroceryDashboard = (props) => {
 			<div className={'grocery-buttons'}>
 				<Logout />
 				<Link className="grocery-view-btn grocery-btn-default" to="/view-grocery">View Completed Grocery</Link>
+				<button className='grocery-btn-default' onClick={handleDeleteAll}>Delete All Data</button>
 
 			</div>
 			<p className={'grocery-total'}><span>Grand Total:</span> {parseFloat(total).toFixed(2)}</p>

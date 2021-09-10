@@ -1,3 +1,5 @@
+@import '../../assets/css/variables.scss';
+
 .grocery {
 	width: 900px;
   margin: 0 auto 0;
@@ -111,7 +113,7 @@
 .grocery-total {
 	margin: 0;
 	font-weight: 700;
-	font-family: 'Indie Flower', cursive;
+	font-family: $base-font;
 	font-size: 35px;
   position: absolute;
   right: 70px;
@@ -136,7 +138,7 @@
 
 .grocery-add-item-btn {
 	flex: 0 0 200px;
-	font-family: 'Indie Flower', cursive;
+	font-family: $base-font;
 }
 
 .grocery-list {
@@ -150,7 +152,7 @@
 
 	.react-datepicker__input-container {
 		input {
-			font-family: 'Indie Flower', cursive;
+			font-family: $base-font;
 			border: 0;
 			border-bottom: 1px solid #000;
 		}

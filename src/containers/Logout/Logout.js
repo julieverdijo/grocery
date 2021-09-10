@@ -10,7 +10,6 @@ const Logout = (props) => {
 	const dispatch = useDispatch();
 	const handleLogout = () => {
 		firebaseAuth.signOut().then(() => {
-		  console.log('user is logged out');
 		  dispatch(authLogout());
 		  history.push('/login');
 		}).catch((error) => {

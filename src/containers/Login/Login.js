@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, Redirect } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { firebaseAuth } from '../../firebase';
 import { authLogin } from '../../redux/actions/auth';
 import { Link } from 'react-router-dom';
@@ -31,15 +31,12 @@ const Login = (props) => {
 	const authenticateUser = (email, password) => {
 		firebaseAuth.signInWithEmailAndPassword(email, password)
 	  .then((userCredential) => {
-	    // Signed in
 	    let user = userCredential.user;
 	    dispatch(authLogin(user.email));
 	    history.push('/');
-	    // ...
 	  })
 	  .catch((error) => {
-	    var errorCode = error.code;
-	    var errorMessage = error.message;
+	    console.log(error);
 	  });
 
 	}
@@ -74,12 +71,10 @@ const Login = (props) => {
 	}, [errors])
 
 	useEffect(() => {
-		console.log(errors);
-		console.log(formValid);
 		if(email === '' && password === '') {
 			setFormValid(false);
 		}
-	})
+	},[email, password])
 
 	return (
 		<div className="login-wrapper">

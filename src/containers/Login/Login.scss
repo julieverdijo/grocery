@@ -1,3 +1,5 @@
+@import '../../assets/css/variables.scss';
+
 .login-wrapper {
 	height: 100%;
     display: flex;
@@ -23,7 +25,7 @@
     width: 300px;
     padding: 0 10px;
     box-sizing: border-box;
-    font-family: 'Indie Flower', cursive;
+    font-family: $base-font;
 }
 
 .form-button {
@@ -31,7 +33,7 @@
     background-color: #000;
     color: #fff;
     height: 30px;
-    font-family: 'Indie Flower', cursive;
+    font-family: $base-font;
     font-size: 17px;
     border: 0;
 

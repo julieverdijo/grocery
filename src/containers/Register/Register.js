@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, Redirect } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { firebaseAuth } from '../../firebase';
 import { authLogin } from '../../redux/actions/auth';
 import { Link } from 'react-router-dom';
@@ -30,16 +30,12 @@ const Register = () => {
 	const handleRegister = (email, password) => {
 		firebaseAuth.createUserWithEmailAndPassword(email, password)
 	  .then((userCredential) => {
-	    // Signed in 
 	    let user = userCredential.user;
 	    dispatch(authLogin(user.email));
 	    history.push('/');
-	    // ...
 	  })
 	  .catch((error) => {
-	    var errorCode = error.code;
-	    var errorMessage = error.message;
-	    // ..
+	    console.log(error)
 	  });
 	}
 
@@ -73,12 +69,10 @@ const Register = () => {
 	}, [errors])
 
 	useEffect(() => {
-		console.log(errors);
-		console.log(formValid);
 		if(email === '' && password === '') {
 			setFormValid(false);
 		}
-	})
+	},[email, password])
 
 	return (
 		<div className="login-wrapper">
@@ -118,7 +112,7 @@ const Register = () => {
 					disabled={!formValid ? true: false}
 					onClick={() => handleRegister(email, password)}
 				>
-					Login
+					Register
 				</button>
 				<p>Already have an account? <Link to="/login">Login here</Link></p>
 			</div>

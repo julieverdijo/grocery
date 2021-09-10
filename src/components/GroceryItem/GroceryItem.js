@@ -43,8 +43,8 @@ const GroceryItem = ({ item, items, id, setItems, handleDelete, handleComplete, 
 				className={item.complete ? 'complete grocery-item-input' : 'grocery-item-input'}
 			/>
 			<span className={'grocery-item-total'}>{parseFloat(item.total).toFixed(2)}</span>
-			<img src={check} className={'grocery-item-complete'} onClick={() => handleComplete(item.id, item.complete)} />
-			<img src={remove} className={'grocery-item-delete'} onClick={() => handleDelete(item.id)} />
+			<img src={check} className={'grocery-item-complete'} onClick={() => handleComplete(item.id, item.complete)} alt=""/>
+			<img src={remove} className={'grocery-item-delete'} onClick={() => handleDelete(item.id)} alt=""/>
 		</li>
 	)
 }
