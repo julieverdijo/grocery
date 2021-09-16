@@ -16,7 +16,7 @@ const Login = (props) => {
 	const [errors, setErrors] = useState({
     email: '',
     password: '',
-
+    message: '',
   });
 
 	const handleChange = (e) => {
@@ -37,6 +37,10 @@ const Login = (props) => {
 	  })
 	  .catch((error) => {
 	    console.log(error);
+	    setErrors((prevState) => ({
+	        ...prevState,
+	        message: error.message,
+	    }))
 	  });
 
 	}
@@ -117,6 +121,7 @@ const Login = (props) => {
 					Login
 				</button>
 				<p>No account yet? <Link to="/register">Register here</Link></p>
+				<p className="error-message">{errors.message}</p>
 			</div>
 		</div>
 		</div>

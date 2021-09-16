@@ -2,9 +2,13 @@
 
 .login-wrapper {
 	height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form {
+  width: 300px;
 }
 
 .login-heading {
@@ -40,4 +44,10 @@
     &:disabled {
     	background-color: #ccc;
     }
+}
+
+.error-message,
+.form-error {
+  color: red;
+  font-size: 14px;
 }
